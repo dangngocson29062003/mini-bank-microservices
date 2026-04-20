@@ -38,8 +38,15 @@ public class AccountController {
     )
     @ApiResponses({
             @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
+                    responseCode = "201",
+                    description = "HTTP Status CREATED"
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "HTTP Status Bad Request",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDTO.class)
+                    )
             ),
             @ApiResponse(
                     responseCode = "500",
@@ -59,10 +66,26 @@ public class AccountController {
             summary = "Fetch Account Details REST API",
             description = "REST API to fetch Customer & Account details based on a mobile number"
     )
-    @ApiResponse(
-            responseCode = "200",
-            description = "HTTP Status OK"
-    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "401",
+                    description = "HTTP Status Not Found",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDTO.class)
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDTO.class)
+                    )
+            )
+    })
     @GetMapping
     public ResponseEntity<CustomerDTO> fetchAccountDetails(@Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be 10 digits")
                                                            @RequestParam String mobileNumber) {
@@ -82,7 +105,7 @@ public class AccountController {
             ),
             @ApiResponse(
                     responseCode = "417",
-                    description = "Exprectation Failed"
+                    description = "HTTP Status Expectation Failed"
             ),
             @ApiResponse(
                     responseCode = "500",
@@ -117,7 +140,7 @@ public class AccountController {
             ),
             @ApiResponse(
                     responseCode = "417",
-                    description = "Exprectation Failed"
+                    description = "HTTP Status Expectation Failed"
             ),
             @ApiResponse(
                     responseCode = "500",
