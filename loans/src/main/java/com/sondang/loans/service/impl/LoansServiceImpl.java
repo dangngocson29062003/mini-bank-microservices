@@ -20,6 +20,9 @@ public class LoansServiceImpl implements ILoansService {
 
     private final LoansRepository loansRepository;
 
+    /**
+     * @param mobileNumber - Mobile Number of the Customer
+     */
     @Override
     public void createLoan(String mobileNumber) {
         Optional<Loans> loan = loansRepository.findByMobileNumber(mobileNumber);
@@ -29,6 +32,11 @@ public class LoansServiceImpl implements ILoansService {
         loansRepository.save(createNewLoan(mobileNumber));
     }
 
+    /**
+     *
+     * @param mobileNumber - Input mobile Number
+     * @return Loan Details based on a given mobileNumber
+     */
     @Override
     public LoansDTO fetchLoan(String mobileNumber) {
         Loans loan = loansRepository.findByMobileNumber(mobileNumber)
@@ -37,6 +45,11 @@ public class LoansServiceImpl implements ILoansService {
         return loansDTO;
     }
 
+    /**
+     *
+     * @param loansDto - LoansDto Object
+     * @return boolean indicating if the update of loan details is successful or not
+     */
     @Override
     public boolean updateLoan(LoansDTO loansDto) {
         Loans loans = loansRepository.findByMobileNumber(loansDto.getMobileNumber())
@@ -46,6 +59,10 @@ public class LoansServiceImpl implements ILoansService {
         return true;
     }
 
+    /**
+     * @param mobileNumber - Input MobileNumber
+     * @return boolean indicating if the delete of loan details is successful or not
+     */
     @Override
     public boolean deleteLoan(String mobileNumber) {
         Loans loans = loansRepository.findByMobileNumber(mobileNumber)
@@ -54,6 +71,10 @@ public class LoansServiceImpl implements ILoansService {
         return true;
     }
 
+    /**
+     * @param mobileNumber - Mobile Number of the Customer
+     * @return the new loan details
+     */
     public Loans createNewLoan(String mobileNumber) {
         Loans newLoan = new Loans();
         long randomLoanNumber = 100000000000L + new Random().nextInt(900000000);

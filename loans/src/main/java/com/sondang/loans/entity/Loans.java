@@ -4,8 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Getter @Setter @ToString @AllArgsConstructor @NoArgsConstructor
-public class Loans extends BaseEntity{
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+public class Loans extends BaseEntity {
 
     @Id
     @Column(name = "loan_id")

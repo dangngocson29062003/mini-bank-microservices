@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -90,7 +91,7 @@ public class LoansController {
             )
     })
     @GetMapping
-    public ResponseEntity<LoansDTO> fetchLoanDetails(@Pattern(regexp = "^$|[0-9]{10}", message = "MobileNumber must be 10 digits")
+    public ResponseEntity<LoansDTO> fetchLoanDetails( @Pattern(regexp = "^$|[0-9]{10}", message = "MobileNumber must be 10 digits")
                                                      @RequestParam String mobileNumber) {
         LoansDTO loansDTO = iLoansService.fetchLoan(mobileNumber);
         return ResponseEntity
@@ -127,7 +128,7 @@ public class LoansController {
             )
     })
     @PutMapping
-    public ResponseEntity<ResponseDTO> updateLoanDetails(@RequestBody LoansDTO loansDTO) {
+    public ResponseEntity<ResponseDTO> updateLoanDetails(@Valid @RequestBody LoansDTO loansDTO) {
         boolean isUpdated = iLoansService.updateLoan(loansDTO);
         if (isUpdated) {
             return ResponseEntity
