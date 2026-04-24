@@ -1,0 +1,15 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "2.0"
+
+loans:
+  message: "Welcome to MiniBank loans related QA APIs"
+  contactDetails:
+    name: "Son Dang - QA"
+    email: "dangngocson29062003@gmail.com"
+  onCallSupport:
+    - 0793610514

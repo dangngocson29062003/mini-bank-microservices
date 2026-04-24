@@ -1,0 +1,31 @@
+server:
+  port: 8071
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: git
+  #    with the keyword "native", you can access classpath location or file location
+#    active: native
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/dangngocson29062003/mini-bank-config.git"
+#         default select branch which the configuration server have to connect
+          default-label: main
+#         The configuration server will wait a maximum of 5 seconds
+#         and after 5 seconds, if for any reason it cannot connect to the Git repository, it will throw an exception
+          timeout: 5
+#         when the configuration server starts up, it will clone the Git repository
+#         Advantages: - detect error early, - No unexpected runtime errors
+#         Disadvantages: - Starts up slowly, - Depends on Git when starts up
+#         **BEST PRACTICE**
+          clone-on-start: true
+#         When a client requests configuration from the Config Server,
+#         the server will always execute git fetch and git pull from the Git repository to ensure the latest configuration is returned.
+          force-pull: true
+
+#        native:
+#          search-locations: "file:///D://config"
+#          search-locations: "classpath:/config"

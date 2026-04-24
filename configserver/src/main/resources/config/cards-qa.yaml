@@ -1,0 +1,10 @@
+build:
+  version: "2.0"
+
+cards:
+  message: "Welcome to MiniBank cards related QA APIs"
+  contactDetails:
+    name: "Son Dang - QA Lead"
+    email: "dangngocson29062003@gmail.com"
+  onCallSupport:
+    - 0793610514

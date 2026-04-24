@@ -1,0 +1,10 @@
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to MiniBank loans related local APIs"
+  contactDetails:
+    name: "Son Dang - Developer"
+    email: "dangngocson29062003@gmail.com"
+  onCallSupport:
+    - 0793610514

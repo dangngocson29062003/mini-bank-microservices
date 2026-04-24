@@ -1,0 +1,15 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to MiniBank loans related prod APIs"
+  contactDetails:
+    name: "Son Dang - Product Owner"
+    email: "dangngocson29062003@gmail.com"
+  onCallSupport:
+    - 0793610514

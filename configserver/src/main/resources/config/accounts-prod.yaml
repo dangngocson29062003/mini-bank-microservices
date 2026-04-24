@@ -1,0 +1,10 @@
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to MiniBank accounts related prod APIs"
+  contactDetails:
+    name: "Son Dang - Product Owner"
+    email: "dangngocson29062003@gmail.com"
+  onCallSupport:
+    - 0793610514
